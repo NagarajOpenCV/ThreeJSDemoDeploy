@@ -48,28 +48,30 @@
 				//
 				document.body.appendChild( ARButton.createButton( renderer, { requiredFeatures: [ 'hit-test' ] } ) );
 				//
-				const geometry = new THREE.CylinderGeometry( 0.1, 0.1, 0.2, 32 ).translate( 0, 0.1, 0 );
-
-				//Gltf model loading
-				const loader = new GLTFLoader();
-				// Optional: Provide a DRACOLoader instance to decode compressed mesh data
-				const dracoLoader = new DRACOLoader();
-				dracoLoader.setDecoderPath( '/examples/js/libs/draco/' );
-				loader.setDRACOLoader( dracoLoader );
-
-				loader.load( "models/ferrari.glb", function ( gltf ) {
-					scene.add( gltf.scene );
-				}, undefined, function ( error ) {
-					console.error( error );
-				} );
-
+				//const geometry = new THREE.CylinderGeometry( 0.1, 0.1, 0.2, 32 ).translate( 0, 0.1, 0 );
+				
 				function onSelect() {
-					if ( reticle.visible ) {
-						const material = new THREE.MeshPhongMaterial( { color: 0xffffff * Math.random() } );
+					if ( reticle.visible ) 
+					{
+						/*const material = new THREE.MeshPhongMaterial( { color: 0xffffff * Math.random() } );
 						const mesh = new THREE.Mesh( geometry, material );
 						mesh.position.setFromMatrixPosition( reticle.matrix );
 						mesh.scale.y = Math.random() * 2 + 1;
-						scene.add( mesh );
+						scene.add( mesh );*/
+
+						//Gltf model loading
+						const loader = new GLTFLoader();
+						// Optional: Provide a DRACOLoader instance to decode compressed mesh data
+						const dracoLoader = new DRACOLoader();
+						dracoLoader.setDecoderPath( '/examples/js/libs/draco/' );
+						loader.setDRACOLoader( dracoLoader );
+
+						loader.load( "models/ferrari.glb", function ( gltf ) {
+							gltf.scene.position.setFromMatrixPosition(reticle.matrix);
+							scene.add( gltf.scene );
+						}, undefined, function ( error ) {
+							console.error( error );
+						} );
 					}
 				}
 
