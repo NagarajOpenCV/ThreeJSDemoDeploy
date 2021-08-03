@@ -86,11 +86,7 @@
 							gltf.scene.position.setFromMatrixPosition(reticle.matrix);
 							carModel = gltf;
 
-							gltf.scene.scale.set(0.1,0.1,0.1);	
-							
-							carModel.scene.addEventListener("touchstart", handleTouchStart, false );
-							carModel.scene.addEventListener( "touchend", handleTouchEnd, false );
-							carModel.scene.addEventListener( "touchmove", handleTouchMove, false );
+							gltf.scene.scale.set(0.1,0.1,0.1);								
 
 							scene.add( gltf.scene );
 
@@ -115,22 +111,7 @@
 				//
 				window.addEventListener( 'resize', onWindowResize );
 			}
-
-			function handleTouchStart()
-			{
-				console.log("Touch Started");
-			}
-			function handleTouchEnd()
-			{
-				console.log("Touch ended");
-			}
-			function handleTouchMove()
-			{
-				console.log("Touch moving ");
-				var axisZ =new THREE.Vector3(0,0,1);
-				carModel.rotateOnAxis(axisZ,Math.PI/8);
-			}
-
+			
 			function onWindowResize() {
 				camera.aspect = window.innerWidth / window.innerHeight;
 				camera.updateProjectionMatrix();
