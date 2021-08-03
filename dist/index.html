@@ -7,17 +7,14 @@
 		<link type="text/css" rel="stylesheet" href="main.css">
 	</head>
 	<body>
-
 		<div id="info">
 			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> ar - hit test<br/>(Chrome Android 81+)
 		</div>
-
 		<script type="module">
-
-			import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+			import * as THREE from './js/three.js/build/three.module.js';
 			import {OrbitControls} from 'https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/controls/OrbitControls.js';
 			import { ARButton } from 'https://unpkg.com/three/examples/jsm/webxr/ARButton.js';
-			import {GLTFLoader} from 'https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/loaders/GLTFLoader.js';
+			import { GLTFLoader } from './js/three.js/examples/jsm/loaders/GLTFLoader.js';
 			import { DRACOLoader } from './js/three.js/examples/jsm/loaders/DRACOLoader.js';
 
 			let container;
@@ -51,19 +48,19 @@
 				//
 				//const geometry = new THREE.CylinderGeometry( 0.1, 0.1, 0.2, 32 ).translate( 0, 0.1, 0 );
 				//Gltf model loading
-				const loader = new GLTFLoader();
+				/*const loader = new GLTFLoader();
 
 				// Optional: Provide a DRACOLoader instance to decode compressed mesh data
 				const dracoLoader = new DRACOLoader();
 				dracoLoader.setDecoderPath( 'js/three.js/examples/js/libs/draco/' );
 				loader.setDRACOLoader( dracoLoader );
 
-				loader.load( "models/ferrari.glb", function ( gltf ) {
-					gltf.scene.position.setFromMatrixPosition(reticle.matrix);
+				loader.load( "./models/ferrari.glb", function ( gltf ) {
+					//gltf.scene.position.setFromMatrixPosition(reticle.matrix);
 					scene.add( gltf.scene );
 				}, undefined, function ( error ) {
 					console.error( error );
-				} );
+				} );*/
 				
 				
 				function onSelect() {
@@ -78,7 +75,12 @@
 						//Gltf model loading
 						const loader = new GLTFLoader();
 
-						loader.load( "./models/ferrari.glb", function ( gltf ) {
+						// Optional: Provide a DRACOLoader instance to decode compressed mesh data
+						const dracoLoader = new DRACOLoader();
+						dracoLoader.setDecoderPath( 'js/three.js/examples/js/libs/draco/' );
+						loader.setDRACOLoader( dracoLoader );
+
+						loader.load( "models/ferrari.glb", function ( gltf ) {
 							gltf.scene.position.setFromMatrixPosition(reticle.matrix);
 							scene.add( gltf.scene );
 						}, undefined, function ( error ) {
