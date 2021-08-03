@@ -118,15 +118,17 @@
 
 			function handleTouchStart()
 			{
-
+				console.log("Touch Started");
 			}
 			function handleTouchEnd()
 			{
-				
+				console.log("Touch ended");
 			}
 			function handleTouchMove()
 			{
-				
+				console.log("Touch moving ");
+				var axisZ =new THREE.Vector3(0,0,1);
+				carModel.rotateOnAxis(axisZ,Math.PI/8);
 			}
 
 
@@ -141,10 +143,7 @@
 			}
 			function render( timestamp, frame ) {
 				if ( frame ) 
-				{
-					var axisZ =new THREE.Vector3(0,0,1);
-					carModel.rotateOnAxis(axisZ,Math.PI/8);
-
+				{					
 					const referenceSpace = renderer.xr.getReferenceSpace();
 					const session = renderer.xr.getSession();
 					if ( hitTestSourceRequested === false ) {
