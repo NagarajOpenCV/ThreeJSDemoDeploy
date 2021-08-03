@@ -87,7 +87,7 @@
 							gltf.scene.position.setFromMatrixPosition(reticle.matrix);
 							carModel = gltf;
 
-							gltf.scene.scale.set(0.1,0.1,0.1);
+							gltf.scale.set(0.1,0.1,0.1);
 
 							carModel.scene.addEventListener("touchstart", handleTouchStart, false );
 							carModel.scene.addEventListener( "touchend", handleTouchEnd, false );
@@ -140,6 +140,9 @@
 				renderer.setAnimationLoop( render );
 			}
 			function render( timestamp, frame ) {
+
+				carModel.rotation.z += 0.1;
+
 				if ( frame ) {
 					const referenceSpace = renderer.xr.getReferenceSpace();
 					const session = renderer.xr.getSession();
