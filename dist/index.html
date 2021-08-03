@@ -140,10 +140,11 @@
 				renderer.setAnimationLoop( render );
 			}
 			function render( timestamp, frame ) {
+				if ( frame ) 
+				{
+					var axisZ =new THREE.Vector3(0,0,1);
+					carModel.rotateOnAxis(axisZ,Math.PI/8);
 
-				carModel.rotation.z += 0.1;
-
-				if ( frame ) {
 					const referenceSpace = renderer.xr.getReferenceSpace();
 					const session = renderer.xr.getSession();
 					if ( hitTestSourceRequested === false ) {
