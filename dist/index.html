@@ -81,24 +81,6 @@
 						
 						console.log("Model load initiated");
 
-						const fontloader = new THREE.FontLoader();
-
-						fontloader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
-
-							const geometry = new THREE.TextGeometry( 'Hello three.js!', {
-								font: font,
-								size: 80,
-								height: 5,
-								curveSegments: 12,
-								bevelEnabled: true,
-								bevelThickness: 10,
-								bevelSize: 8,
-								bevelOffset: 0,
-								bevelSegments: 5
-							} );
-						} );
-						scene.add(fontloader);
-
 						loader.load( "./models/ferrari.glb", function ( gltf ) {
 							gltf.scene.position.setFromMatrixPosition(reticle.matrix);
 							console.log("Model loaded on scene");
