@@ -25,6 +25,7 @@
 
 			let hitTestSource = null;
 			let hitTestSourceRequested = false;
+			let carPlaced = false;
 
 			init();
 			animate();
@@ -63,8 +64,10 @@
 				} );*/						
 				
 				function onSelect() {
-					if ( reticle.visible ) 
+					if ( reticle.visible && carPlaced == false) 
 					{
+						carPlaced = true;
+						reticle.visible = false;
 						/*const material = new THREE.MeshPhongMaterial( { color: 0xffffff * Math.random() } );
 						const mesh = new THREE.Mesh( geometry, material );
 						mesh.position.setFromMatrixPosition( reticle.matrix );
