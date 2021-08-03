@@ -87,13 +87,13 @@
 							gltf.scene.position.setFromMatrixPosition(reticle.matrix);
 							carModel = gltf;
 
-							carModel.scale.set(0.5,0.5,0.5);
+							gltf.scene.scale.set(0.1,0.1,0.1);
 
 							carModel.scene.addEventListener("touchstart", handleTouchStart, false );
 							carModel.scene.addEventListener( "touchend", handleTouchEnd, false );
 							carModel.scene.addEventListener( "touchmove", handleTouchMove, false );
 
-							scene.add( carModel.scene );
+							scene.add( gltf.scene );
 						}, undefined, function ( error ) {
 							console.error( error );
 						} );
@@ -116,6 +116,18 @@
 				window.addEventListener( 'resize', onWindowResize );
 			}
 
+			function handleTouchStart()
+			{
+
+			}
+			function handleTouchEnd()
+			{
+				
+			}
+			function handleTouchMove()
+			{
+				
+			}
 
 
 			function onWindowResize() {
