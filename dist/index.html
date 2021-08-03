@@ -13,7 +13,7 @@
 		<script type="module">
 			import * as THREE from './js/three.js/build/three.module.js';
 			import {OrbitControls} from 'https://threejsfundamentals.org/threejs/resources/threejs/r127/examples/jsm/controls/OrbitControls.js';
-			import { ARButton } from 'https://unpkg.com/three/examples/jsm/webxr/ARButton.js';
+			import { ARButton } from "./js/three.js/examples/jsm/webxr/ARButton.js";
 			import { GLTFLoader } from './js/three.js/examples/jsm/loaders/GLTFLoader.js';
 			import { DRACOLoader } from './js/three.js/examples/jsm/loaders/DRACOLoader.js';
 
@@ -60,8 +60,7 @@
 					scene.add( gltf.scene );
 				}, undefined, function ( error ) {
 					console.error( error );
-				} );*/
-				
+				} );*/						
 				
 				function onSelect() {
 					if ( reticle.visible ) 
@@ -79,9 +78,30 @@
 						const dracoLoader = new DRACOLoader();
 						dracoLoader.setDecoderPath( 'js/three.js/examples/js/libs/draco/' );
 						loader.setDRACOLoader( dracoLoader );
+						
+						console.log("Model load initiated");
+
+						const fontloader = new THREE.FontLoader();
+
+						fontloader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
+
+							const geometry = new THREE.TextGeometry( 'Hello three.js!', {
+								font: font,
+								size: 80,
+								height: 5,
+								curveSegments: 12,
+								bevelEnabled: true,
+								bevelThickness: 10,
+								bevelSize: 8,
+								bevelOffset: 0,
+								bevelSegments: 5
+							} );
+						} );
+						scene.add(fontloader);
 
 						loader.load( "./models/ferrari.glb", function ( gltf ) {
 							gltf.scene.position.setFromMatrixPosition(reticle.matrix);
+							console.log("Model loaded on scene");
 							scene.add( gltf.scene );
 						}, undefined, function ( error ) {
 							console.error( error );
