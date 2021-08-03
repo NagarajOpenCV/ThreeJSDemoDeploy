@@ -68,7 +68,6 @@
 					if ( reticle.visible && carPlaced === false) 
 					{
 						carPlaced = true;
-						reticle.visible = false;
 						/*const material = new THREE.MeshPhongMaterial( { color: 0xffffff * Math.random() } );
 						const mesh = new THREE.Mesh( geometry, material );
 						mesh.position.setFromMatrixPosition( reticle.matrix );
@@ -87,13 +86,14 @@
 							gltf.scene.position.setFromMatrixPosition(reticle.matrix);
 							carModel = gltf;
 
-							gltf.scale.set(0.1,0.1,0.1);
-
+							gltf.scene.scale.set(0.1,0.1,0.1);	
+							
 							carModel.scene.addEventListener("touchstart", handleTouchStart, false );
 							carModel.scene.addEventListener( "touchend", handleTouchEnd, false );
 							carModel.scene.addEventListener( "touchmove", handleTouchMove, false );
 
 							scene.add( gltf.scene );
+
 						}, undefined, function ( error ) {
 							console.error( error );
 						} );
@@ -130,7 +130,6 @@
 				var axisZ =new THREE.Vector3(0,0,1);
 				carModel.rotateOnAxis(axisZ,Math.PI/8);
 			}
-
 
 			function onWindowResize() {
 				camera.aspect = window.innerWidth / window.innerHeight;
